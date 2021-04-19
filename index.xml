@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>盒木</title>
+        <link>https://example.com/</link>
+        <description>Recent content on 盒木</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Tue, 28 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>hugo博客使用笔记</title>
+        <link>https://example.com/p/hugo-blog-use/</link>
+        <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
+        
+        <guid>https://example.com/p/hugo-blog-use/</guid>
+        <description>&lt;p&gt;关于是怎么了解到hugo的已经被忘记了，就记得hugo比hexo好用，然后就开始用了。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>文章配置</title>
+        <link>https://example.com/p/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/</link>
+        <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
+        
+        <guid>https://example.com/p/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/</guid>
+        <description>&lt;img src="https://example.com/p/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/screenshot.png" alt="Featured image of post 文章配置" /&gt;&lt;h3 id=&#34;配置变量说明官网链接&#34;&gt;配置变量说明官网链接：&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/content-management/front-matter/#front-matter-variables&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Front Matter Variables&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;模板&#34;&gt;模板&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;YAML&lt;/strong&gt;, identified by ‘&lt;code&gt;---&lt;/code&gt;’.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;---
+author: 
+title: 
+description: 
+date: 2020-00-00
+slug: 
+image: 
+categories:
+    - 
+tags: 
+    - 
+（四个空格，不要用两个tab）
+---
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;TOML&lt;/strong&gt;, identified by ‘&lt;code&gt;+++&lt;/code&gt;’.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;+++
+author = &amp;quot;&amp;quot;
+title = &amp;quot;&amp;quot;
+description = &amp;quot;&amp;quot;
+date = &amp;quot;2020-00-00&amp;quot;
+slug = &amp;quot;&amp;quot;
+image = &amp;quot;&amp;quot;
+categories = [
+    &amp;quot;&amp;quot;
+]
+tags = [
+    &amp;quot;&amp;quot;
+]
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;JSON&lt;/strong&gt;, a single JSON object which is surrounded by ‘&lt;code&gt;{&lt;/code&gt;’ and ‘&lt;code&gt;}&lt;/code&gt;’, each on their own line.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;author&amp;quot;: &amp;quot;&amp;quot;
+    &amp;quot;title&amp;quot;: &amp;quot;&amp;quot;
+    &amp;quot;description&amp;quot;: &amp;quot;&amp;quot;
+    &amp;quot;date&amp;quot;: &amp;quot;2020-00-00&amp;quot;
+    &amp;quot;slug&amp;quot;: &amp;quot;&amp;quot;
+    &amp;quot;image&amp;quot;: &amp;quot;&amp;quot;
+    &amp;quot;categories&amp;quot;: [
+        &amp;quot;&amp;quot;
+    ]
+    &amp;quot;tags&amp;quot;: [
+        &amp;quot;&amp;quot;
+    ]    
+}
+&lt;/code&gt;&lt;/pre&gt;</description>
+        </item>
+        
+    </channel>
+</rss>
