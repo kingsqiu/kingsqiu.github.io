@@ -4,6 +4,7 @@ build:
     - arjen/hugo-build:
         version: "0.81"
         theme: stack
+        config: config.yaml
         flags: --buildDrafts=true
 deploy:
   steps:
