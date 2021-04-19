@@ -5,7 +5,7 @@ build:
         version: "0.82"
         theme: hugo-theme-stack
         config: config.yaml
-        flags: --buildDrafts=true
+       
 deploy:
   steps:
     - install-packages:
