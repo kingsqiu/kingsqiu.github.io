@@ -3,7 +3,7 @@ build:
   steps:
     - arjen/hugo-build:
         version: "0.74.3"
-        theme: stack
+        theme: hugo-theme-stack
         config: config.yaml
        
 deploy:
