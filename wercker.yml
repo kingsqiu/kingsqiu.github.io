@@ -2,7 +2,7 @@ box: debian
 build:
   steps:
     - arjen/hugo-build:
-        version: "0.81"
+        version: "0.82"
         theme: stack
         config: config.yaml
         flags: --buildDrafts=true
