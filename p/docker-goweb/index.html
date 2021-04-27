@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Docker的必要性 适用场景：在本地开发应用程序后，有很多的依赖环境或包，甚至对依赖的具体版本都有严格的要求。当开发过程完成后，若希望将应用程序部署到web服务器。这个时候必须确保所有依赖项都安装正确并且版本也完全相同，否则应用程序可能会崩溃并无法运行。如果想在另一个web服务器上也部署该应用程序，那么必须从头开始重复这个过程。这种场景就是Docker发挥作用的地方。
+对于运行应用程序的主机，不管是笔记本电脑还是web服务器，唯一需要做的就是运行一个docker容器平台。从以后，就不需要担心使用的是MacOS，Ubuntu，Arch还是其他。只需定义一次应用，即可随时随地运行。
+Docker部署示例 创建Docker镜像  镜像（image）包含运行应用程序所需的所有东西——代码或二进制文件、运行时、依赖项以及所需的任何其他文件系统对象。
+ 或者简单地说，镜像（image）是定义应用程序及其运行所需的一切。
+编写Dockerfile 要创建Docker镜像（image）必须在配置文件中指定步骤。这个文件默认为Dockerfile。（虽然这个文件名可以随意命名它，但最好还是使用默认的Dockerfile。）
+具体内容如下：
+FROMgolang:alpine# 为我们的镜像设置必要的环境变量ENV GO111MODULE=on \  CGO_ENABLED=0 \  GOOS=linux \  GOARCH=amd64 # 移动到工作目录：/buildWORKDIR/build# 将代码复制到容器中COPY . .# 将我们的代码编译成二进制可执行文件appRUN go build -o app .# 移动到用于存放生成的二进制文件的 /dist 目录WORKDIR/dist# 将二进制文件从 /build 目录复制到这里RUN cp /build/app .# 声明服务端口EXPOSE8888# 启动容器时运行的命令CMD [&amp;#34;/dist/app&amp;#34;]Dockerfile解析 官方文档：https://hub.docker.com/_/golang
+**From：**这里使用基础镜像golang:alpine。是一个我们能够访问的存储在Docker仓库的基础镜像。这个镜像运行的是alpine Linux发行版，该发行版的大小很小并且内置了Go。
+**Env：**用来设置编译阶段需要用的环境变量。
+**EXPORT，CMD：**最后，声明服务端口，因为应用程序监听的是这个端口并通过这个端口对外提供服务。并且我们还定义了在我们运行镜像的时候默认执行的命令CMD [&amp;quot;/dist/app&amp;quot;]。
+构建镜像 示例代码：
+package main import ( &amp;#34;fmt&amp;#34; &amp;#34;net/http&amp;#34; ) func main() { http.HandleFunc(&amp;#34;/&amp;#34;, hello) server := &amp;amp;http.Server{ Addr: &amp;#34;:8888&amp;#34;, } fmt.'><title>使用Docker部署Go的web应用</title>
+
+<link rel='canonical' href='https://example.com/p/docker-goweb/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='使用Docker部署Go的web应用'>
+<meta property='og:description' content='Docker的必要性 适用场景：在本地开发应用程序后，有很多的依赖环境或包，甚至对依赖的具体版本都有严格的要求。当开发过程完成后，若希望将应用程序部署到web服务器。这个时候必须确保所有依赖项都安装正确并且版本也完全相同，否则应用程序可能会崩溃并无法运行。如果想在另一个web服务器上也部署该应用程序，那么必须从头开始重复这个过程。这种场景就是Docker发挥作用的地方。
+对于运行应用程序的主机，不管是笔记本电脑还是web服务器，唯一需要做的就是运行一个docker容器平台。从以后，就不需要担心使用的是MacOS，Ubuntu，Arch还是其他。只需定义一次应用，即可随时随地运行。
+Docker部署示例 创建Docker镜像  镜像（image）包含运行应用程序所需的所有东西——代码或二进制文件、运行时、依赖项以及所需的任何其他文件系统对象。
+ 或者简单地说，镜像（image）是定义应用程序及其运行所需的一切。
+编写Dockerfile 要创建Docker镜像（image）必须在配置文件中指定步骤。这个文件默认为Dockerfile。（虽然这个文件名可以随意命名它，但最好还是使用默认的Dockerfile。）
+具体内容如下：
+FROMgolang:alpine# 为我们的镜像设置必要的环境变量ENV GO111MODULE=on \  CGO_ENABLED=0 \  GOOS=linux \  GOARCH=amd64 # 移动到工作目录：/buildWORKDIR/build# 将代码复制到容器中COPY . .# 将我们的代码编译成二进制可执行文件appRUN go build -o app .# 移动到用于存放生成的二进制文件的 /dist 目录WORKDIR/dist# 将二进制文件从 /build 目录复制到这里RUN cp /build/app .# 声明服务端口EXPOSE8888# 启动容器时运行的命令CMD [&amp;#34;/dist/app&amp;#34;]Dockerfile解析 官方文档：https://hub.docker.com/_/golang
+**From：**这里使用基础镜像golang:alpine。是一个我们能够访问的存储在Docker仓库的基础镜像。这个镜像运行的是alpine Linux发行版，该发行版的大小很小并且内置了Go。
+**Env：**用来设置编译阶段需要用的环境变量。
+**EXPORT，CMD：**最后，声明服务端口，因为应用程序监听的是这个端口并通过这个端口对外提供服务。并且我们还定义了在我们运行镜像的时候默认执行的命令CMD [&amp;quot;/dist/app&amp;quot;]。
+构建镜像 示例代码：
+package main import ( &amp;#34;fmt&amp;#34; &amp;#34;net/http&amp;#34; ) func main() { http.HandleFunc(&amp;#34;/&amp;#34;, hello) server := &amp;amp;http.Server{ Addr: &amp;#34;:8888&amp;#34;, } fmt.'>
+<meta property='og:url' content='https://example.com/p/docker-goweb/'>
+<meta property='og:site_name' content='盒木'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='docker' /><meta property='article:tag' content='go' /><meta property='article:published_time' content='2020-01-03T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-01-03T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="使用Docker部署Go的web应用">
+<meta name="twitter:description" content="Docker的必要性 适用场景：在本地开发应用程序后，有很多的依赖环境或包，甚至对依赖的具体版本都有严格的要求。当开发过程完成后，若希望将应用程序部署到web服务器。这个时候必须确保所有依赖项都安装正确并且版本也完全相同，否则应用程序可能会崩溃并无法运行。如果想在另一个web服务器上也部署该应用程序，那么必须从头开始重复这个过程。这种场景就是Docker发挥作用的地方。
+对于运行应用程序的主机，不管是笔记本电脑还是web服务器，唯一需要做的就是运行一个docker容器平台。从以后，就不需要担心使用的是MacOS，Ubuntu，Arch还是其他。只需定义一次应用，即可随时随地运行。
+Docker部署示例 创建Docker镜像  镜像（image）包含运行应用程序所需的所有东西——代码或二进制文件、运行时、依赖项以及所需的任何其他文件系统对象。
+ 或者简单地说，镜像（image）是定义应用程序及其运行所需的一切。
+编写Dockerfile 要创建Docker镜像（image）必须在配置文件中指定步骤。这个文件默认为Dockerfile。（虽然这个文件名可以随意命名它，但最好还是使用默认的Dockerfile。）
+具体内容如下：
+FROMgolang:alpine# 为我们的镜像设置必要的环境变量ENV GO111MODULE=on \  CGO_ENABLED=0 \  GOOS=linux \  GOARCH=amd64 # 移动到工作目录：/buildWORKDIR/build# 将代码复制到容器中COPY . .# 将我们的代码编译成二进制可执行文件appRUN go build -o app .# 移动到用于存放生成的二进制文件的 /dist 目录WORKDIR/dist# 将二进制文件从 /build 目录复制到这里RUN cp /build/app .# 声明服务端口EXPOSE8888# 启动容器时运行的命令CMD [&amp;#34;/dist/app&amp;#34;]Dockerfile解析 官方文档：https://hub.docker.com/_/golang
+**From：**这里使用基础镜像golang:alpine。是一个我们能够访问的存储在Docker仓库的基础镜像。这个镜像运行的是alpine Linux发行版，该发行版的大小很小并且内置了Go。
+**Env：**用来设置编译阶段需要用的环境变量。
+**EXPORT，CMD：**最后，声明服务端口，因为应用程序监听的是这个端口并通过这个端口对外提供服务。并且我们还定义了在我们运行镜像的时候默认执行的命令CMD [&amp;quot;/dist/app&amp;quot;]。
+构建镜像 示例代码：
+package main import ( &amp;#34;fmt&amp;#34; &amp;#34;net/http&amp;#34; ) func main() { http.HandleFunc(&amp;#34;/&amp;#34;, hello) server := &amp;amp;http.Server{ Addr: &amp;#34;:8888&amp;#34;, } fmt.">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/IMG_5113_huf2556c2a512df84545cd660bd34abe1c_77419_300x0_resize_q75_box.JPG" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://example.com">盒木</a></h1>
+        <h2 class="site-description">宁静致远</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>个人技术栈</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>暗色模式</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://example.com" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/" >
+                工具汇总
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/docker-goweb/">使用Docker部署Go的web应用</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Jan 03, 2020</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="docker的必要性">Docker的必要性</h2>
+<p><strong>适用场景</strong>：在本地开发应用程序后，有很多的依赖环境或包，甚至对依赖的具体版本都有严格的要求。当开发过程完成后，若希望将应用程序部署到web服务器。这个时候必须确保所有依赖项都安装正确并且版本也完全相同，否则应用程序可能会崩溃并无法运行。如果想在另一个web服务器上也部署该应用程序，那么必须从头开始重复这个过程。这种场景就是Docker发挥作用的地方。</p>
+<p>对于运行应用程序的主机，不管是笔记本电脑还是web服务器，唯一需要做的就是运行一个docker容器平台。从以后，就不需要担心使用的是MacOS，Ubuntu，Arch还是其他。只需定义一次应用，即可随时随地运行。</p>
+<h2 id="docker部署示例">Docker部署示例</h2>
+<h3 id="创建docker镜像">创建Docker镜像</h3>
+<blockquote>
+<p>镜像（image）包含运行应用程序所需的所有东西——代码或二进制文件、运行时、依赖项以及所需的任何其他文件系统对象。</p>
+</blockquote>
+<p>或者简单地说，镜像（image）是定义应用程序及其运行所需的一切。</p>
+<h3 id="编写dockerfile">编写Dockerfile</h3>
+<p>要创建Docker镜像（image）必须在配置文件中指定步骤。这个文件默认为<code>Dockerfile</code>。（虽然这个文件名可以随意命名它，但最好还是使用默认的<code>Dockerfile</code>。）</p>
+<p>具体内容如下：</p>
+<div class="highlight"><pre class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="k">FROM</span><span class="s"> golang:alpine</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># 为我们的镜像设置必要的环境变量</span><span class="err">
+</span><span class="err"></span><span class="k">ENV</span> <span class="nv">GO111MODULE</span><span class="o">=</span>on <span class="se">\
+</span><span class="se"></span>    <span class="nv">CGO_ENABLED</span><span class="o">=</span><span class="m">0</span> <span class="se">\
+</span><span class="se"></span>    <span class="nv">GOOS</span><span class="o">=</span>linux <span class="se">\
+</span><span class="se"></span>    <span class="nv">GOARCH</span><span class="o">=</span>amd64
+
+<span class="c"># 移动到工作目录：/build</span><span class="err">
+</span><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /build</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># 将代码复制到容器中</span><span class="err">
+</span><span class="err"></span><span class="k">COPY</span> . .<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># 将我们的代码编译成二进制可执行文件app</span><span class="err">
+</span><span class="err"></span><span class="k">RUN</span> go build -o app .<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># 移动到用于存放生成的二进制文件的 /dist 目录</span><span class="err">
+</span><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /dist</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># 将二进制文件从 /build 目录复制到这里</span><span class="err">
+</span><span class="err"></span><span class="k">RUN</span> cp /build/app .<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># 声明服务端口</span><span class="err">
+</span><span class="err"></span><span class="k">EXPOSE</span><span class="s"> 8888</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># 启动容器时运行的命令</span><span class="err">
+</span><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;/dist/app&#34;</span><span class="p">]</span><span class="err">
+</span></code></pre></div><h4 id="dockerfile解析">Dockerfile解析</h4>
+<p>官方文档：https://hub.docker.com/_/golang</p>
+<p>**From：**这里使用基础镜像<code>golang:alpine</code>。是一个我们能够访问的存储在Docker仓库的基础镜像。这个镜像运行的是alpine Linux发行版，该发行版的大小很小并且内置了Go。</p>
+<p>**Env：**用来设置编译阶段需要用的环境变量。</p>
+<p>**EXPORT，CMD：**最后，声明服务端口，因为应用程序监听的是这个端口并通过这个端口对外提供服务。并且我们还定义了在我们运行镜像的时候默认执行的命令<code>CMD [&quot;/dist/app&quot;]</code>。</p>
+<h3 id="构建镜像">构建镜像</h3>
+<p>示例代码：</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;fmt&#34;</span>
+	<span class="s">&#34;net/http&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">http</span><span class="p">.</span><span class="nf">HandleFunc</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">,</span> <span class="nx">hello</span><span class="p">)</span>
+	<span class="nx">server</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">http</span><span class="p">.</span><span class="nx">Server</span><span class="p">{</span>
+		<span class="nx">Addr</span><span class="p">:</span> <span class="s">&#34;:8888&#34;</span><span class="p">,</span>
+	<span class="p">}</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;server startup...&#34;</span><span class="p">)</span>
+	<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">server</span><span class="p">.</span><span class="nf">ListenAndServe</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;server startup failed, err:%v\n&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">hello</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">_</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">w</span><span class="p">.</span><span class="nf">Write</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&#34;hello world&#34;</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div><p>在项目目录下，执行下面的命令创建镜像，并指定镜像名称为<code>goweb_app</code>：</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker build . -t goweb_app
+</code></pre></div><p>等待构建过程结束，输出如下提示：</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">...
+Successfully built 90d9283286b7
+Successfully tagged goweb_app:latest
+</code></pre></div><p>现在我们已经准备好了镜像，但是目前它什么也没做。我们接下来要做的是运行我们的镜像，以便它能够处理我们的请求。运行中的镜像称为容器。</p>
+<p>执行下面的命令来运行镜像：</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker run -p 8888:8888 goweb_app
+</code></pre></div><p>标志位<code>-p</code>用来定义端口绑定。由于容器中的应用程序在端口8888上运行，我们将其绑定到主机端口也是8888。如果要绑定到另一个端口，则可以使用<code>-p $HOST_PORT:8888</code>。例如<code>-p 5000:8888</code>。</p>
+<p>现在就可以测试下我们的web程序是否工作正常，打开浏览器输入<code>http://127.0.0.1:8888</code>就能看到我们事先定义的响应内容如下：</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">hello world
+</code></pre></div><h2 id="分阶段构建示例">分阶段构建示例</h2>
+<p>Go程序编译之后会得到一个可执行的二进制文件，其实在最终的镜像中是不需要go编译器的，也就是说我们只需要一个运行最终二进制文件的容器即可。</p>
+<p>Docker的最佳实践之一是通过仅保留二进制文件来减小镜像大小，为此这里使用一种称为多阶段构建的技术，这意味着我们将通过多个步骤构建镜像。</p>
+<div class="highlight"><pre class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="k">FROM</span><span class="s"> golang:alpine AS builder</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># 为我们的镜像设置必要的环境变量</span><span class="err">
+</span><span class="err"></span><span class="k">ENV</span> <span class="nv">GO111MODULE</span><span class="o">=</span>on <span class="se">\
+</span><span class="se"></span>    <span class="nv">CGO_ENABLED</span><span class="o">=</span><span class="m">0</span> <span class="se">\
+</span><span class="se"></span>    <span class="nv">GOOS</span><span class="o">=</span>linux <span class="se">\
+</span><span class="se"></span>    <span class="nv">GOARCH</span><span class="o">=</span>amd64
+
+<span class="c"># 移动到工作目录：/build</span><span class="err">
+</span><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /build</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># 将代码复制到容器中</span><span class="err">
+</span><span class="err"></span><span class="k">COPY</span> . .<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># 将我们的代码编译成二进制可执行文件 app</span><span class="err">
+</span><span class="err"></span><span class="k">RUN</span> go build -o app .<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c">###################</span><span class="err">
+</span><span class="err"></span><span class="c"># 接下来创建一个小镜像</span><span class="err">
+</span><span class="err"></span><span class="c">###################</span><span class="err">
+</span><span class="err"></span><span class="k">FROM</span><span class="s"> scratch</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># 从builder镜像中把/dist/app 拷贝到当前目录</span><span class="err">
+</span><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /build/app /<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># 需要运行的命令</span><span class="err">
+</span><span class="err"></span><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;/app&#34;</span><span class="p">]</span><span class="err">
+</span></code></pre></div><p>使用这种技术，剥离了使用<code>golang:alpine</code>作为编译镜像来编译得到二进制可执行文件的过程，并基于<code>scratch</code>生成一个简单的、非常小的新镜像。将二进制文件从命名为<code>builder</code>的第一个镜像中复制到新创建的<code>scratch</code>镜像中。</p>
+<p>有关scratch镜像的更多信息，查看https://hub.docker.com/_/scratch</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/docker/">docker</a>
+        
+            <a href="/tags/go/">go</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (DISQUS) {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2021 盒木
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

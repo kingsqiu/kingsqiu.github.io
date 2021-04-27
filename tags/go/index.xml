@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on 盒木</title>
-    <link>https://example.com/post/</link>
-    <description>Recent content in Posts on 盒木</description>
+    <title>go on 盒木</title>
+    <link>https://example.com/tags/go/</link>
+    <description>Recent content in go on 盒木</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 03 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 03 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/go/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用Docker部署Go的web应用</title>
       <link>https://example.com/p/docker-goweb/</link>
@@ -25,25 +25,6 @@ FROMgolang:alpine# 为我们的镜像设置必要的环境变量ENV GO111MODULE=
 **EXPORT，CMD：**最后，声明服务端口，因为应用程序监听的是这个端口并通过这个端口对外提供服务。并且我们还定义了在我们运行镜像的时候默认执行的命令CMD [&amp;quot;/dist/app&amp;quot;]。
 构建镜像 示例代码：
 package main import ( &amp;#34;fmt&amp;#34; &amp;#34;net/http&amp;#34; ) func main() { http.HandleFunc(&amp;#34;/&amp;#34;, hello) server := &amp;amp;http.Server{ Addr: &amp;#34;:8888&amp;#34;, } fmt.</description>
-    </item>
-    
-    <item>
-      <title>hugo博客使用笔记</title>
-      <link>https://example.com/p/hugo-blog-use/</link>
-      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://example.com/p/hugo-blog-use/</guid>
-      <description>关于是怎么了解到hugo的已经被忘记了，就记得hugo比hexo好用，然后就开始用了。</description>
-    </item>
-    
-    <item>
-      <title>文章配置</title>
-      <link>https://example.com/p/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/</link>
-      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://example.com/p/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/</guid>
-      <description>配置变量说明官网链接： Front Matter Variables
-模板  YAML, identified by ‘---’.  --- author: title: description: date: 2020-00-00 slug: image: categories: - tags: - --- （四个空格，不要用两个tab）  TOML, identified by ‘+++’.  +++ author = &amp;quot;&amp;quot; title = &amp;quot;&amp;quot; description = &amp;quot;&amp;quot; date = &amp;quot;2020-00-00&amp;quot; slug = &amp;quot;&amp;quot; image = &amp;quot;&amp;quot; categories = [ &amp;quot;&amp;quot; ] tags = [ &amp;quot;&amp;quot; ]  JSON, a single JSON object which is surrounded by ‘{’ and ‘}’, each on their own line.</description>
     </item>
     
   </channel>
