@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 盒木</title>
-    <link>https://example.com/tags/</link>
+    <link>https://kingsqiu.github.io/tags/</link>
     <description>Recent content in Tags on 盒木</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 03 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 03 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://kingsqiu.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>docker</title>
-      <link>https://example.com/tags/docker/</link>
+      <link>https://kingsqiu.github.io/tags/docker/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/docker/</guid>
+      <guid>https://kingsqiu.github.io/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>go</title>
-      <link>https://example.com/tags/go/</link>
+      <link>https://kingsqiu.github.io/tags/go/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/go/</guid>
+      <guid>https://kingsqiu.github.io/tags/go/</guid>
       <description></description>
     </item>
     

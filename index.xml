@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>盒木</title>
-        <link>https://example.com/</link>
+        <link>https://kingsqiu.github.io/</link>
         <description>Recent content on 盒木</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Fri, 03 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 03 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://kingsqiu.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>使用Docker部署Go的web应用</title>
-        <link>https://example.com/p/docker-goweb/</link>
+        <link>https://kingsqiu.github.io/p/docker-goweb/</link>
         <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/p/docker-goweb/</guid>
+        <guid>https://kingsqiu.github.io/p/docker-goweb/</guid>
         <description>&lt;h2 id=&#34;docker的必要性&#34;&gt;Docker的必要性&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;适用场景&lt;/strong&gt;：在本地开发应用程序后，有很多的依赖环境或包，甚至对依赖的具体版本都有严格的要求。当开发过程完成后，若希望将应用程序部署到web服务器。这个时候必须确保所有依赖项都安装正确并且版本也完全相同，否则应用程序可能会崩溃并无法运行。如果想在另一个web服务器上也部署该应用程序，那么必须从头开始重复这个过程。这种场景就是Docker发挥作用的地方。&lt;/p&gt;
 &lt;p&gt;对于运行应用程序的主机，不管是笔记本电脑还是web服务器，唯一需要做的就是运行一个docker容器平台。从以后，就不需要担心使用的是MacOS，Ubuntu，Arch还是其他。只需定义一次应用，即可随时随地运行。&lt;/p&gt;
@@ -128,20 +128,20 @@ Successfully tagged goweb_app:latest
         </item>
         <item>
         <title>hugo博客使用笔记</title>
-        <link>https://example.com/p/hugo-blog-use/</link>
+        <link>https://kingsqiu.github.io/p/hugo-blog-use/</link>
         <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/p/hugo-blog-use/</guid>
+        <guid>https://kingsqiu.github.io/p/hugo-blog-use/</guid>
         <description>&lt;p&gt;关于是怎么了解到hugo的已经被忘记了，就记得hugo比hexo好用，然后就开始用了。&lt;/p&gt;
 </description>
         </item>
         <item>
         <title>文章配置</title>
-        <link>https://example.com/p/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/</link>
+        <link>https://kingsqiu.github.io/p/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/</link>
         <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/p/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/</guid>
-        <description>&lt;img src="https://example.com/p/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/screenshot.png" alt="Featured image of post 文章配置" /&gt;&lt;h3 id=&#34;配置变量说明官网链接&#34;&gt;配置变量说明官网链接：&lt;/h3&gt;
+        <guid>https://kingsqiu.github.io/p/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/</guid>
+        <description>&lt;img src="https://kingsqiu.github.io/p/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/screenshot.png" alt="Featured image of post 文章配置" /&gt;&lt;h3 id=&#34;配置变量说明官网链接&#34;&gt;配置变量说明官网链接：&lt;/h3&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/content-management/front-matter/#front-matter-variables&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Front Matter Variables&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;模板&#34;&gt;模板&lt;/h3&gt;

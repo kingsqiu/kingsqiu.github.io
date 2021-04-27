@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hugo on 盒木</title>
-    <link>https://example.com/categories/hugo/</link>
+    <link>https://kingsqiu.github.io/categories/hugo/</link>
     <description>Recent content in Hugo on 盒木</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 05 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 05 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://kingsqiu.github.io/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>hugo博客使用笔记</title>
-      <link>https://example.com/p/hugo-blog-use/</link>
+      <link>https://kingsqiu.github.io/p/hugo-blog-use/</link>
       <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/p/hugo-blog-use/</guid>
+      <guid>https://kingsqiu.github.io/p/hugo-blog-use/</guid>
       <description>关于是怎么了解到hugo的已经被忘记了，就记得hugo比hexo好用，然后就开始用了。</description>
     </item>
     
     <item>
       <title>文章配置</title>
-      <link>https://example.com/p/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/</link>
+      <link>https://kingsqiu.github.io/p/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/p/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/</guid>
+      <guid>https://kingsqiu.github.io/p/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/</guid>
       <description>配置变量说明官网链接： Front Matter Variables
 模板  YAML, identified by ‘---’.  --- author: title: description: date: 2020-00-00 slug: image: categories: - tags: - --- （四个空格，不要用两个tab）  TOML, identified by ‘+++’.  +++ author = &amp;quot;&amp;quot; title = &amp;quot;&amp;quot; description = &amp;quot;&amp;quot; date = &amp;quot;2020-00-00&amp;quot; slug = &amp;quot;&amp;quot; image = &amp;quot;&amp;quot; categories = [ &amp;quot;&amp;quot; ] tags = [ &amp;quot;&amp;quot; ]  JSON, a single JSON object which is surrounded by ‘{’ and ‘}’, each on their own line.</description>
     </item>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>go on 盒木</title>
-    <link>https://example.com/tags/go/</link>
+    <link>https://kingsqiu.github.io/tags/go/</link>
     <description>Recent content in go on 盒木</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 03 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 03 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://kingsqiu.github.io/tags/go/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用Docker部署Go的web应用</title>
-      <link>https://example.com/p/docker-goweb/</link>
+      <link>https://kingsqiu.github.io/p/docker-goweb/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/p/docker-goweb/</guid>
+      <guid>https://kingsqiu.github.io/p/docker-goweb/</guid>
       <description>Docker的必要性 适用场景：在本地开发应用程序后，有很多的依赖环境或包，甚至对依赖的具体版本都有严格的要求。当开发过程完成后，若希望将应用程序部署到web服务器。这个时候必须确保所有依赖项都安装正确并且版本也完全相同，否则应用程序可能会崩溃并无法运行。如果想在另一个web服务器上也部署该应用程序，那么必须从头开始重复这个过程。这种场景就是Docker发挥作用的地方。
 对于运行应用程序的主机，不管是笔记本电脑还是web服务器，唯一需要做的就是运行一个docker容器平台。从以后，就不需要担心使用的是MacOS，Ubuntu，Arch还是其他。只需定义一次应用，即可随时随地运行。
 Docker部署示例 创建Docker镜像  镜像（image）包含运行应用程序所需的所有东西——代码或二进制文件、运行时、依赖项以及所需的任何其他文件系统对象。
