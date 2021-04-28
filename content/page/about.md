@@ -16,7 +16,9 @@ menu:
 
 基础：
 
-- 网络｜算法｜系统
+- 网络:｜
+- 算法:｜
+- 系统：[linux](https://www.processon.com/view/link/608917c65653bb53b66dad39)｜
 
 硬件开发：
 
@@ -35,4 +37,6 @@ menu:
 
 数据库：
 
-- New_project
+- [MySQL](https://www.processon.com/mindmap/5cbd2665e4b09b16ffc16eff)
+- redis
+- MongoDB
