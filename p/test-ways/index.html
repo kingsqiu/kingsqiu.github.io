@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='理论知识'><title>测试基础方法</title>
+
+<link rel='canonical' href='https://kingsqiu.github.io/p/test-ways/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='测试基础方法'>
+<meta property='og:description' content='理论知识'>
+<meta property='og:url' content='https://kingsqiu.github.io/p/test-ways/'>
+<meta property='og:site_name' content='盒木'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='基础' /><meta property='article:published_time' content='2020-03-04T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-03-04T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="测试基础方法">
+<meta name="twitter:description" content="理论知识">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/IMG_5113_huf2556c2a512df84545cd660bd34abe1c_77419_300x0_resize_q75_box.JPG" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://kingsqiu.github.io/">盒木</a></h1>
+        <h2 class="site-description">宁静致远</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>个人技术栈</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>暗色模式</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://kingsqiu.github.io/" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E6%B5%8B%E8%AF%95/" >
+                测试
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/test-ways/">测试基础方法</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        理论知识
+    </h3>
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Mar 04, 2020</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="黒白灰盒测试">黒、白、灰盒测试</h2>
+<h3 id="黑盒测试">黑盒测试</h3>
+<p>黑盒测试把被测对象看成一个黑匣子，只考虑期整体的特性，不考虑期内部具体实现。</p>
+<p>黑盒测试的被测对象可以是一个系统、一个子系统、一模块、子模块、一个函数等。</p>
+<p>黑盒测试又可以被称为基于规格的测试。</p>
+<h4 id="常见的黑盒测试类型"><strong>常见的黑盒测试类型</strong>：</h4>
+<ul>
+<li>功能性测试
+<ul>
+<li>一种是顺序测试每个程序特性或功能；</li>
+<li>另一种是一个模块一个模块的测试，即每个功能在其最先调用的地方被测试；</li>
+</ul>
+</li>
+<li>容量测试，检测软件在处理海量数据时的局限性，能发现系统效率方面的问题。</li>
+<li>负载测试，检测系统在短时间内处理巨大的数据量或执行许多功能调用上的能力。</li>
+<li>恢复性测试，主要保证系统在崩溃后能回复外部数据的能力。</li>
+</ul>
+<h3 id="白盒测试">白盒测试</h3>
+<p>白盒测试是依据被测软件分析程序内部构造，并根据内部构造设计用例，来对内部控制流程进行测试，可完全不顾程序的整体功能实现情况。</p>
+<p>白盒测试是基于程序结构的逻辑驱动测试。</p>
+<p>白盒测试又可以被称为玻璃盒测试、透明盒测试、开放盒测试、结构化测试、逻辑驱动测试。</p>
+<p>白盒测试一般在测试前期进行，通过达到一定的逻辑覆盖率指标，使得软件内部逻辑控制结构上的问题能基本得到解决。</p>
+<p>白盒测试能保证内部逻辑结构能达到一定的覆盖程度，能够给予软件代码质量更大的保证。</p>
+<p>白盒测试发现问题后解决问题的成本较低，毕竟介入的早嘛。</p>
+<p>白盒测试一般会用到静态分析和动态分析两类技术，常用的有：</p>
+<ul>
+<li>静态分析：控制流分析、数据流分析、信息流分析；</li>
+<li>动态分析：逻辑覆盖测试（分支测试、路径测试等）、程序插桩等。</li>
+</ul>
+<h4 id="白盒测试的特点"><strong>白盒测试的特点</strong></h4>
+<ul>
+<li>测试人员需要了解软件的实现；</li>
+<li>可以检测代码中的每一条分支和路径；</li>
+<li>揭示隐藏在代码代码中的错误；</li>
+<li>对代码的测试相对彻底；</li>
+<li>实现代码结构上的优化；</li>
+<li>白盒测试的投入较大，成本高；</li>
+<li>白盒测试不验证（需求）规格的正确性；</li>
+</ul>
+<h4 id="逻辑覆盖率测试"><strong>逻辑覆盖率测试</strong></h4>
+<p>根据覆盖的对象不同，存在多种逻辑覆盖测试：</p>
+<ul>
+<li>语句覆盖；</li>
+<li>判定覆盖；</li>
+<li>条件覆盖；</li>
+<li>判定-条件覆盖；</li>
+<li>路径覆盖；</li>
+<li>等</li>
+</ul>
+<p>而逻辑覆盖率的统计是通过<strong>程序插桩</strong>来实现的。</p>
+<p><strong>程序插桩：</strong><a class="link" href="https://baike.baidu.com/item/%e7%a8%8b%e5%ba%8f%e6%8f%92%e6%a1%a9"  target="_blank" rel="noopener"
+    >程序插桩</a>，最早是由J.C. Huang 教授提出的，它是在保证被测程序原有逻辑完整性的基础上在程序中插入一些<a class="link" href="https://baike.baidu.com/item/%e6%8e%a2%e9%92%88/1846154"  target="_blank" rel="noopener"
+    >探针</a>（又称为“探测仪”，本质上就是进行信息采集的<a class="link" href="https://baike.baidu.com/item/%e4%bb%a3%e7%a0%81%e6%ae%b5/9966451"  target="_blank" rel="noopener"
+    >代码段</a>，可以是<a class="link" href="https://baike.baidu.com/item/%e8%b5%8b%e5%80%bc%e8%af%ad%e5%8f%a5/4248688"  target="_blank" rel="noopener"
+    >赋值语句</a>或采集覆盖信息的<a class="link" href="https://baike.baidu.com/item/%e5%87%bd%e6%95%b0%e8%b0%83%e7%94%a8/4127405"  target="_blank" rel="noopener"
+    >函数调用</a>），通过<a class="link" href="https://baike.baidu.com/item/%e6%8e%a2%e9%92%88/1846154"  target="_blank" rel="noopener"
+    >探针</a>的执行并抛出程序运行的<a class="link" href="https://baike.baidu.com/item/%e7%89%b9%e5%be%81/6205236"  target="_blank" rel="noopener"
+    >特征</a>数据，通过对这些数据的<a class="link" href="https://baike.baidu.com/item/%e5%88%86%e6%9e%90/4327108"  target="_blank" rel="noopener"
+    >分析</a>，可以获得程序的<a class="link" href="https://baike.baidu.com/item/%e6%8e%a7%e5%88%b6%e6%b5%81/854473"  target="_blank" rel="noopener"
+    >控制流</a>和数据流信息，进而得到<a class="link" href="https://baike.baidu.com/item/%e9%80%bb%e8%be%91%e8%a6%86%e7%9b%96/3231015"  target="_blank" rel="noopener"
+    >逻辑覆盖</a>等动态信息，从而实现测试目的的方法。</p>
+<p>简单来说，程序插桩就是我们在调试程序时，常常要在程序中插入一些打印语句（想想我们在程序中常用的print语句），其目的是希望在程序执行中打印出我们最为关心的信息，然后进一步通过这些信息了解程序执行过程中程序的一些动态特性。</p>
+<p>从这一思想发展出程序插桩技术能够按照用户的要求，获取程序的各种信息，成为测试工作的有效测试手段。</p>
+<h3 id="灰盒测试">灰盒测试</h3>
+<p>根据利用的被测对象的信息不同，会采用不同的方法进行测试，一般的：</p>
+<ul>
+<li>利用被测对象的整体特性信息，采用黑盒测试方法。</li>
+<li>利用被测对象的内部具体实现信息，采用白盒测试方法。</li>
+<li>如果既是利用被测对象的整体特性信息，又利用被测对象的内部具体实现信息，采用的就是灰盒测试方法。两种信息占比不同，相应的灰度就不同，完全是整体特性信息，就是黑盒测试，完全是内部具体实现信息，就是白盒测试。</li>
+</ul>
+<h3 id="黑白灰盒测试方法总结">黑、白、灰盒测试方法总结</h3>
+<p>我们一般从以下五个维度来区分：</p>
+<ul>
+<li>测试阶段不同：
+<ul>
+<li>单元测试阶段主要利用白盒测试方法。</li>
+<li>集成测试阶段主要利用灰盒测试方法。</li>
+<li>系统测试阶段主要利用黑盒测试方法。</li>
+</ul>
+</li>
+<li>测试依据，因为测试阶段的不同，采用的测试方法也不同，那它们的测试依据也不同：
+<ul>
+<li>白盒测试主要依据详细测试说明书（LLD）。</li>
+<li>黑盒测试主要依据需求规格（设计）说明书（SRS）。</li>
+<li>灰盒测试主要依据概要规格（设计）说明书（HLD）。</li>
+</ul>
+</li>
+<li>测试方法：
+<ul>
+<li>白盒测试方法可以有静态和动态，控制流、信息流、数据流、各种覆盖率、插桩处理。</li>
+<li>黑盒测试方法有各种测试类型（功能型、负载、恢复性），以及应用等价类、边界值、流程图法、正交法等。</li>
+<li>灰盒测试这里即用白盒的，也用黑盒的。</li>
+</ul>
+</li>
+<li>评估基准：
+<ul>
+<li>白盒根据逻辑覆盖率来评估。</li>
+<li>黑盒主要看需求规格的覆盖率。</li>
+<li>灰盒主要看接口覆盖率。</li>
+</ul>
+</li>
+<li>特点不一样：
+<ul>
+<li>白盒测试，特点是及早的发现问题，定位问题也很快，缺点是对接口、对设计、程序之间的调用、用户感受也不是很好。</li>
+<li>黑盒解决问题的代价比较大，很大发现模块内部的问题。</li>
+</ul>
+</li>
+</ul>
+<h2 id="静态动态测试">静态、动态测试</h2>
+<p>软件研发可以看成是一个生产过程，在此过程中会有产品输出或者称为工件输出。</p>
+<p>输出的产品可以分为两类：</p>
+<ul>
+<li>最终产品，如变编译后的软件、用户手册等。</li>
+<li>中间产品，如SRS、HLD、LLD、源代码等。</li>
+</ul>
+<p>无论是最终产品还是中间产品，都可以分成代码和文档。</p>
+<p>文档进一步细分还可以分为：</p>
+<ul>
+<li>开发文档，如SRS、HLD、LLD。</li>
+<li>测试文档，如测试计划、测试方案、测试用例等。</li>
+</ul>
+<p>只要是软件产品，都是测试对象。</p>
+<p><strong>静态测试和动态测试的划分</strong></p>
+<p>静态测试，不运行被测对象，而是采用其他手段和技术对被测对象进行检测的一种测试技术。例如：代码走读、文档评审、程序分析都是静态测试的范畴，常用技术有静态分析技术。</p>
+<p>动态测试，按照预先设计的数据和步骤去运行被测对象，从而对被测对象进行检测的一种测试技术，常用技术有动态分析技术。</p>
+<h3 id="静态测试">静态测试</h3>
+<p>静态测试这里主要了解<strong>静态分析技术</strong>。</p>
+<p>**定义：**静态分析是一种不通过执行程序而分析程序执行的技术。</p>
+<p>**功能：**检查软件的表示和描述是否一致，没有冲突或者没有歧义，它的目标是纠正软件系统在描述、表示和规格上的错误，因此是任何进一步测试执行的前提。</p>
+<p>主要有三种不同的程序测试可能性：</p>
+<ul>
+<li>规格考虑，程序是否满足编码，语法上是否具有一致性和完整性。</li>
+<li>考虑文档描述是否规范、准确、是否便于查阅，例如描述是否不清楚、出现歧义等。</li>
+<li>考虑程序和文档之前的一致性，例如文档要求某文件大于1M抛出错误，而程序则是大于等于1M诸如此类的问题。</li>
+</ul>
+<h4 id="静态技术结构">静态技术结构：</h4>
+<ul>
+<li><strong>手工静态分析——同行评审</strong>
+<ul>
+<li>正规检视，指定的人员参与、相关会议、相关文档都是比较正规的。</li>
+<li>技术评审。</li>
+<li>走查。</li>
+</ul>
+</li>
+<li><strong>自动化静态分析</strong>
+<ul>
+<li><strong>静态验证：</strong>
+检测规格到程序实现之间的转换上的问题，验证器需要有形式化的规格和规格的形式化定义，静态验证比较程序提供的设计值和在规格文档中被预先定义的目标值。</li>
+<li><strong>语法分析器：</strong>
+是一个基本的自动化静态分析工具，它把程序/文档文本分解成独立的语句，当在内部检查程序/文本的时候，语句的一致性被进行了检查。</li>
+<li><strong>符号执行器：</strong>
+在符号短语中分析一个程序在给定的路径上做了什么事情，它模拟程序的执行，计算在程序不同位置上变量的值，符号执行器非常适用于数学算法的分析。</li>
+</ul>
+</li>
+</ul>
+<h3 id="动态测试">动态测试</h3>
+<p>**定义：**对软件系统运行行为进行分析，包含程序在受控的环境下使用特定的输入进行正式的运行，然后和期望的结果比较以检查系统运行时正确还是不正确。常用的动态分析技术：</p>
+<ul>
+<li>路径测试</li>
+<li>分支测试</li>
+<li>性能测试</li>
+</ul>
+<h4 id="常用动态分析工具功能"><strong>常用动态分析工具功能</strong></h4>
+<table>
+<thead>
+<tr>
+<th>动态分析类</th>
+<th>工具的功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>测试覆盖率分析</td>
+<td>测试对代码的检测范围</td>
+</tr>
+<tr>
+<td>跟踪</td>
+<td>跟踪程序执行期间的所有路径，例如所有变量的值等</td>
+</tr>
+<tr>
+<td>调整</td>
+<td>度量程序执行过程中使用的资源</td>
+</tr>
+<tr>
+<td>模拟</td>
+<td>模拟系统的一部分，例如无法获得的代码或者硬件</td>
+</tr>
+<tr>
+<td>断言检查</td>
+<td>测试在复杂逻辑结构中是否某个条件已被给出</td>
+</tr>
+</tbody>
+</table>
+<h4 id="常用动态测试工具">常用动态测试工具</h4>
+<ul>
+<li>QARun</li>
+<li>Robot</li>
+<li>QTP</li>
+<li>SikTest</li>
+<li>LoadRunner</li>
+<li>SilkPerformer</li>
+</ul>
+<h2 id="人工测试自动化测试">人工测试、自动化测试</h2>
+<p>**人工测试：**测试活动（评审、测试设计、测试执行）由人来完成，狭义上是指测试执行由人工完成，这是最基本的测试形式。</p>
+<p>**自动化测试：**一般指通过计算机模拟人的测试行为，替代人的测试活动，狭义上是指测试执行由计算机来完成。</p>
+<p><strong>自动化测试工具：</strong></p>
+<ul>
+<li>由HP提供的Quick Test Professional。</li>
+<li>Rational Robot，由IBM提供。</li>
+<li>Coded UI，由Microsoft提供。</li>
+<li>Selenium，开源软件。</li>
+<li>Auto It，开源软件。</li>
+</ul>
+<p><strong>自动化测试的分类</strong></p>
+<ul>
+<li>按照测试目的大致分为：功能自动化测试、性能自动化测试。</li>
+<li>按照测试对象可划分：web自动化测试、APP方向自动化测试、接口自动化测试、单元测试等。</li>
+<li>其他的包括代码测试和数据测试等。</li>
+</ul>
+<p><strong>自动化测试解决了哪些问题</strong></p>
+<ul>
+<li>回归测试：项目在发布新版之后，对之前的功能进行验证。</li>
+<li>压力测试：统计软件服务器处理并发的能力，比如能支持多少个用户同时访问。</li>
+<li>兼容性测试：不同的系统平台，或者不同的浏览器。</li>
+<li>提高测试效率，保证了产品的质量。</li>
+</ul>
+<p><strong>适合自动化测试的场景</strong></p>
+<ul>
+<li>测试任务明确，不会频繁变动。</li>
+<li>软件需求变更较少。</li>
+<li>项目周期长，测试脚本可以复用。</li>
+</ul>
+<p><strong>自动化测试的限制</strong></p>
+<ul>
+<li>不能取代手工测试，自动化测试只能提高测试效率，不能提高测试有效性，即不可能发现更多缺陷。</li>
+<li>手工测试比自动化测试发现的缺陷更多。</li>
+<li>对测试设计依赖性极大，测试设计的不好会遗漏问题。</li>
+<li>自动化测试对软件开发具有很大的依赖性，开发上出现变更可能导致前面的自动化测试完全失效。</li>
+<li>工具本身并不具备想象力。</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (DISQUS) {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2021 盒木
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

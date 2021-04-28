@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on 盒木</title>
-    <link>https://kingsqiu.github.io/post/</link>
-    <description>Recent content in Posts on 盒木</description>
+    <title>测试 on 盒木</title>
+    <link>https://kingsqiu.github.io/categories/%E6%B5%8B%E8%AF%95/</link>
+    <description>Recent content in 测试 on 盒木</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 04 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://kingsqiu.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 04 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://kingsqiu.github.io/categories/%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>测试基础方法</title>
       <link>https://kingsqiu.github.io/p/test-ways/</link>
@@ -31,45 +31,6 @@
 灰盒测试 根据利用的被测对象的信息不同，会采用不同的方法进行测试，一般的：
  利用被测对象的整体特性信息，采用黑盒测试方法。 利用被测对象的内部具体实现信息，采用白盒测试方法。 如果既是利用被测对象的整体特性信息，又利用被测对象的内部具体实现信息，采用的就是灰盒测试方法。两种信息占比不同，相应的灰度就不同，完全是整体特性信息，就是黑盒测试，完全是内部具体实现信息，就是白盒测试。  黑、白、灰盒测试方法总结 我们一般从以下五个维度来区分：
  测试阶段不同：  单元测试阶段主要利用白盒测试方法。 集成测试阶段主要利用灰盒测试方法。 系统测试阶段主要利用黑盒测试方法。   测试依据，因为测试阶段的不同，采用的测试方法也不同，那它们的测试依据也不同：  白盒测试主要依据详细测试说明书（LLD）。 黑盒测试主要依据需求规格（设计）说明书（SRS）。 灰盒测试主要依据概要规格（设计）说明书（HLD）。   测试方法：  白盒测试方法可以有静态和动态，控制流、信息流、数据流、各种覆盖率、插桩处理。 黑盒测试方法有各种测试类型（功能型、负载、恢复性），以及应用等价类、边界值、流程图法、正交法等。 灰盒测试这里即用白盒的，也用黑盒的。   评估基准：  白盒根据逻辑覆盖率来评估。 黑盒主要看需求规格的覆盖率。 灰盒主要看接口覆盖率。   特点不一样：  白盒测试，特点是及早的发现问题，定位问题也很快，缺点是对接口、对设计、程序之间的调用、用户感受也不是很好。 黑盒解决问题的代价比较大，很大发现模块内部的问题。    静态、动态测试 软件研发可以看成是一个生产过程，在此过程中会有产品输出或者称为工件输出。</description>
-    </item>
-    
-    <item>
-      <title>使用Docker部署Go的web应用</title>
-      <link>https://kingsqiu.github.io/p/docker-goweb/</link>
-      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://kingsqiu.github.io/p/docker-goweb/</guid>
-      <description>Docker的必要性 适用场景：在本地开发应用程序后，有很多的依赖环境或包，甚至对依赖的具体版本都有严格的要求。当开发过程完成后，若希望将应用程序部署到web服务器。这个时候必须确保所有依赖项都安装正确并且版本也完全相同，否则应用程序可能会崩溃并无法运行。如果想在另一个web服务器上也部署该应用程序，那么必须从头开始重复这个过程。这种场景就是Docker发挥作用的地方。
-对于运行应用程序的主机，不管是笔记本电脑还是web服务器，唯一需要做的就是运行一个docker容器平台。从以后，就不需要担心使用的是MacOS，Ubuntu，Arch还是其他。只需定义一次应用，即可随时随地运行。
-Docker部署示例 创建Docker镜像  镜像（image）包含运行应用程序所需的所有东西——代码或二进制文件、运行时、依赖项以及所需的任何其他文件系统对象。
- 或者简单地说，镜像（image）是定义应用程序及其运行所需的一切。
-编写Dockerfile 要创建Docker镜像（image）必须在配置文件中指定步骤。这个文件默认为Dockerfile。（虽然这个文件名可以随意命名它，但最好还是使用默认的Dockerfile。）
-具体内容如下：
-FROMgolang:alpine# 为我们的镜像设置必要的环境变量ENV GO111MODULE=on \  CGO_ENABLED=0 \  GOOS=linux \  GOARCH=amd64 # 移动到工作目录：/buildWORKDIR/build# 将代码复制到容器中COPY . .# 将我们的代码编译成二进制可执行文件appRUN go build -o app .# 移动到用于存放生成的二进制文件的 /dist 目录WORKDIR/dist# 将二进制文件从 /build 目录复制到这里RUN cp /build/app .# 声明服务端口EXPOSE8888# 启动容器时运行的命令CMD [&amp;#34;/dist/app&amp;#34;]Dockerfile解析 官方文档：https://hub.docker.com/_/golang
-**From：**这里使用基础镜像golang:alpine。是一个我们能够访问的存储在Docker仓库的基础镜像。这个镜像运行的是alpine Linux发行版，该发行版的大小很小并且内置了Go。
-**Env：**用来设置编译阶段需要用的环境变量。
-**EXPORT，CMD：**最后，声明服务端口，因为应用程序监听的是这个端口并通过这个端口对外提供服务。并且我们还定义了在我们运行镜像的时候默认执行的命令CMD [&amp;quot;/dist/app&amp;quot;]。
-构建镜像 示例代码：
-package main import ( &amp;#34;fmt&amp;#34; &amp;#34;net/http&amp;#34; ) func main() { http.HandleFunc(&amp;#34;/&amp;#34;, hello) server := &amp;amp;http.Server{ Addr: &amp;#34;:8888&amp;#34;, } fmt.</description>
-    </item>
-    
-    <item>
-      <title>hugo博客使用笔记</title>
-      <link>https://kingsqiu.github.io/p/hugo-blog-use/</link>
-      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://kingsqiu.github.io/p/hugo-blog-use/</guid>
-      <description>关于是怎么了解到hugo的已经被忘记了，就记得hugo比hexo好用，然后就开始用了。</description>
-    </item>
-    
-    <item>
-      <title>文章配置</title>
-      <link>https://kingsqiu.github.io/p/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/</link>
-      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://kingsqiu.github.io/p/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/</guid>
-      <description>配置变量说明官网链接： Front Matter Variables
-模板  YAML, identified by ‘---’.  --- author: title: description: date: 2020-00-00 slug: image: categories: - tags: - --- （四个空格，不要用两个tab）  TOML, identified by ‘+++’.  +++ author = &amp;quot;&amp;quot; title = &amp;quot;&amp;quot; description = &amp;quot;&amp;quot; date = &amp;quot;2020-00-00&amp;quot; slug = &amp;quot;&amp;quot; image = &amp;quot;&amp;quot; categories = [ &amp;quot;&amp;quot; ] tags = [ &amp;quot;&amp;quot; ]  JSON, a single JSON object which is surrounded by ‘{’ and ‘}’, each on their own line.</description>
     </item>
     
   </channel>
