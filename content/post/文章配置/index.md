@@ -10,10 +10,10 @@ categories = [
 
 +++
 
-### 配置变量说明官网链接：
+## 配置变量说明官网链接：
 [Front Matter Variables](https://gohugo.io/content-management/front-matter/#front-matter-variables)
 
-### 模板
+## 模板
 
 - **YAML**, identified by ‘`---`’.
 
@@ -69,4 +69,8 @@ tags = [
     ]    
 }
 ```
+
+
+
+## 分类模板与图片示例
 
