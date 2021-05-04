@@ -6,7 +6,212 @@
         <description>Recent content on 盒木</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Wed, 04 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://kingsqiu.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 10 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://kingsqiu.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>常见的黑盒测试方法</title>
+        <link>https://kingsqiu.github.io/p/black_box/</link>
+        <pubDate>Tue, 10 Mar 2020 00:00:00 +0000</pubDate>
+        
+        <guid>https://kingsqiu.github.io/p/black_box/</guid>
+        <description>&lt;p&gt;编写测试用例，都有哪些可以参考的呢？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;需求文档&lt;/li&gt;
+&lt;li&gt;积极与开发、产品、客户进行沟通&lt;/li&gt;
+&lt;li&gt;开发（设计）文档，当然，有可能也拿不到，比如说开发和测试分属不同的公司，人家开发就不一定提供文档。&lt;/li&gt;
+&lt;li&gt;被测系统（已经开发出来的被测系统），一边对照程序，一边编写用例，很多企业都采用这种方式，如果只对照需求文档可能仅能完成测试的30~40%。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在编写黑盒测试用例的时候，我们可以有以下几种形式来完成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;等价类划分法&lt;/li&gt;
+&lt;li&gt;边界值法&lt;/li&gt;
+&lt;li&gt;场景法&lt;/li&gt;
+&lt;li&gt;因果图法&lt;/li&gt;
+&lt;li&gt;判定表法&lt;/li&gt;
+&lt;li&gt;正交（排列）法&lt;/li&gt;
+&lt;li&gt;测试大纲法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;等价类划分法&#34;&gt;等价类划分法&lt;/h2&gt;
+&lt;p&gt;等价类划分法是一种重要的、常用的黑盒测试方法，无需考虑程序的内部结构，只需要考虑程序的输入规格即可，它将不能穷举的测试过程进行合理的分类，划分为了若干份（或称为不同的子集），然后从每个子集中&lt;strong&gt;选取少数具有代表性的数据作为测试用例&lt;/strong&gt;从而保证设计出来的测试用例具有完整性和代表性。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;等价类划分分为（基本概念）：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;有效等价类，指符合《需求规格说明书》，输入合理的数据集合。&lt;/li&gt;
+&lt;li&gt;无效等价类，指不符合《需求规格说明书》，输入不合理的数据集合。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;等价类思考步骤：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先确定有效等价类和无效等价类&lt;/li&gt;
+&lt;li&gt;有效等价类就是一目了然的题目条件（比如在0~20之间测试），要考虑到两端的极值（边界值）和中间值。&lt;/li&gt;
+&lt;li&gt;无效等价类先划分与条件相反的情况（比如不在0~20范围内），再去找特殊情况，如中英文，符号、空格、空等。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;等价类划分发的测试思想&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;穷举测试：把所有可能的数据全部测试一遍称为穷举测试，虽然穷举测试是最全面的测试，但是很明显不现实，因为测试效率太低了，数据量巨大，根本测不过来（思考前面计算器的例子）。但又因为没有做过穷举测试，所以会有遗漏缺陷的风险，如果时间允许，尽可能的做补充测试（觉得有风险有问题的做补充测试）。&lt;/li&gt;
+&lt;li&gt;理想的测试思想，使用最少的测试数据，达到最好的测试质量。&lt;/li&gt;
+&lt;li&gt;而等价类划分法则是从大量的数据中，划分范围（或分类），每个范围内的数据测试效果是等价的，所以每个范围是一个等价类，然后从每个范围内挑选出具有代表性的数据，这些代表数据能反映这个范围内的测试结果。&lt;/li&gt;
+&lt;li&gt;等价类划分法的基本思想是：
+&lt;ul&gt;
+&lt;li&gt;有效等价类，对于程序来说，是有意义的，合理的输入数据集合，然后测试功能是否符合预期。&lt;/li&gt;
+&lt;li&gt;无效等价类，对于程序来说，是无意义的，不合理的输入数据集，用来测试程序是否具有强大的异常处理能力，也就是测试程序的健壮性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;边界值法&#34;&gt;边界值法&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;什么是边界值？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;边界是指对于输入等价类和输出等价类而言，稍高于边界值和稍低于边界值的一些特定情况，边界值分析法常应用于黑盒测试中。边界值也可以称为极值。&lt;/p&gt;
+&lt;p&gt;根据以往的经验来看：&lt;strong&gt;大量的错误是发生在输入或者输出范围的边界上，而不是再输入范围的内部&lt;/strong&gt;。所以，为了保证测试质量，我们需要重点关注测试边界。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;有效数据和无效数据的分界点，往往作为程序员编写程序的判断点，所以，这也是程序员最容易犯错的地方（他很有可能听着歌，脑子里想着是大于小于，结果手比脑子动的快，写成小于等于等等情况），所以，边界值这里是我们测试人员重点测试的地方&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;那么如何解决这类问题？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;找到测试数据的边界点，也就是有效等价类和无效等价类的边界点，对于边界点数据专门进行测试。&lt;/li&gt;
+&lt;li&gt;一般的，测试人员需要对边界值及边界值两边的数分别进行测试。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;确定边界值的一般思路&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;确定边界情况，也就是确定输入或者输出等价类的边界&lt;/li&gt;
+&lt;li&gt;选取正好等于、刚刚大于、刚刚小于边界值作为测试数据&lt;/li&gt;
+&lt;li&gt;边界值的取值依据输入范围区间不同而有所不同，但是都需要把上点值、离点值、和内点值取到。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;边界值的方法思考：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果输入条件规定了范围，则应该取这个范围的边界值，比如&lt;code&gt;1~100&lt;/code&gt;，边界值应该取&lt;code&gt;0 1 100 101&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;如果输入条件规定了输入值的个数。比如密码长度为&lt;code&gt;8~24&lt;/code&gt;，边界值应该取&lt;code&gt;7 8 9 23 24 25&lt;/code&gt;位字符来判断。&lt;/li&gt;
+&lt;li&gt;边界值和等价类的区别，边界值分析不是从等价类中随便找一个作为代表，而是整个等价类的每个边界都要作为测试条件。&lt;/li&gt;
+&lt;li&gt;边界值的思想是在结合实际环境，应该选出到边界和刚超过的值作为测试依据。边界值和等价类是相辅相成的，共同使测试用例更加完善。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;常见的边界值：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;循环中的第1、2次和倒数第1、2次。&lt;/li&gt;
+&lt;li&gt;数值元素的第一个和最后一个值。&lt;/li&gt;
+&lt;li&gt;报表的第一行和最后一行。&lt;/li&gt;
+&lt;li&gt;文本框接收字符个数，用户名长度啊，密码长度等。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;场景法&#34;&gt;场景法&lt;/h2&gt;
+&lt;p&gt;场景法就是模拟用户操作软件时的场景，主要用于测试系统的业务流程。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当接到一个测试任务时，我们并不关注某个控制的边界值，等价类是否满足要求。而是要关注它的主要功能和业务流程是否正确实现，这就需要使用场景法来完成测试。&lt;/li&gt;
+&lt;li&gt;当业务流程没问题时，即软件的主要功能没有问题时，我们再重新从边界值、等价类方面对软件进行测试。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在冒烟测试时也主要采用场景法进行测试。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;用例场景定义&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在场景法中有两个重要的概念：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基本流：按照正确的业务流程来实现一条操作路径，即模拟正确的操作流程。&lt;/li&gt;
+&lt;li&gt;备选流：导致程序出现错误的操作流程，即模拟错误的操作流程。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;用例场景使用来描述流经用例路径的过程，这个过程从开始到结束遍历用例中所有的基本流和备选流。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;用例场景产生的背景&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;现在的软件几乎都是由事件触发来控制流程的，事件触发时的情景便形成了场景，而同一事件因不同的触发顺序和处理结果形成事件流。&lt;/p&gt;
+&lt;p&gt;将这种在软件设计方面的思想引入到软件测试中，生动的描绘出时间触发时的情景，有利于测试设计者测试用例，同时测试用例也更容易得到理解和执行。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在使用场景法设计测试用例时，需要覆盖系统用例中的主&lt;strong&gt;成功场景&lt;/strong&gt;和&lt;strong&gt;扩展场景&lt;/strong&gt;。并且需要适当补充各种正反面的测试用例和考虑出异常场景的情形。&lt;/li&gt;
+&lt;li&gt;当使用场景测试软件没有问题时，可以再使用边界值、等价类划分法等测试方法对软件进行更加细致、完整的测试。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;流程分析法&#34;&gt;流程分析法&lt;/h3&gt;
+&lt;p&gt;流程分析法主要是针对测试场景类型，属于流程测试场景的测试项下的一个测试子项进行设计。是从白盒测试设计方法中的路径覆盖分析法借鉴过来的一种方法。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在白盒测试中，路径就是指函数代码的某个分支组合，路径覆盖法需要构造足够的用例，以覆盖函数的所有代码路径。&lt;/li&gt;
+&lt;li&gt;在黑盒测试中，若将软件系统的某个流程看成路径的话，则可以针对该路径使用路径分析法设计测试用例。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;优点&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;降低了测试用例的设计难度，只要搞清楚各种流程，就可以设计出高质量的测试用例来，而不需要太多测试方面的经验。&lt;/li&gt;
+&lt;li&gt;在测试时间较为紧迫的情况下，可以有的放矢的选择测试用例，而不用完全根据经验来取舍。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;流程分析法的实施步骤&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;详细了解需求。&lt;/li&gt;
+&lt;li&gt;根据需求说明或界面原型，找出业务流程的各个页面以及各个页面之间的流转关系。&lt;/li&gt;
+&lt;li&gt;画出业务流程，由产品经理使用Axure软件制作。&lt;/li&gt;
+&lt;li&gt;写用例，覆盖所有的路径分支。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;因果图法&#34;&gt;因果图法&lt;/h2&gt;
+&lt;p&gt;因果图（Cause-Effect Graph）法是一种利用图解法分析输入的各种组合情况，从而设计测试用例的方法，它适用于检查程序输入条件的各种组合情况。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;因果图法产生的背景&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;等价类划分法和边界值分析方法都是着重的考虑输入条件，但是极少的考虑输入条件的各种组合、输入条件之间的相互制约关系，这样虽然各种输入条件可能出错的情况已经测试到了，但是多个输入条件组合起来可能出错的情况却很难发现。&lt;/li&gt;
+&lt;li&gt;如果在测试的时候，必须考虑输入条件的组合情况，那么可能的组合情况将非常的多，导致测试任务繁重。因此，我们必须考虑一种适合于描述多种条件的组合，相应产生多个动作的形式来进行测试用例的设计，这就用到了因果图，也就是设计逻辑模型。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;因果图的核心&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;因果图之&lt;code&gt;因&lt;/code&gt;，即输入条件。&lt;/li&gt;
+&lt;li&gt;因果图之&lt;code&gt;果&lt;/code&gt;，即输出结果。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;因果图法的特点&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;考虑输入条件的相互制约及组合关系&lt;/li&gt;
+&lt;li&gt;考虑输出条件对输入条件的依赖关系&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;因果图法要注意考虑的要点&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;所有输入/输出条件的相互制约关系及组合关系。&lt;/li&gt;
+&lt;li&gt;输出结果对输入条件的依赖关系，也就是什么样的输入组合会产生怎样的输出结果，即&lt;code&gt;因果关系&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;因果图中的约束条件&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;互斥：最多有一个可能成立&lt;/li&gt;
+&lt;li&gt;包含：至少有一个必须成立&lt;/li&gt;
+&lt;li&gt;唯一：多个原因中只能有一个成立&lt;/li&gt;
+&lt;li&gt;屏蔽：a成立，b不成立；a不成立，b不确定&lt;/li&gt;
+&lt;li&gt;要求：一个出现，另一个一定出现&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;因果图法导出测试用例基本步骤&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;找出所有的原因，原因即是输入条件或输入条件的等价类。&lt;/li&gt;
+&lt;li&gt;找出所有的结果，结果即输出条件。&lt;/li&gt;
+&lt;li&gt;明确所有输入条件之间的制约关系及组合关系。比如，哪些条件可以组合到一起，哪些条件不能组合到一起。&lt;/li&gt;
+&lt;li&gt;明确所有输出条件之间的制约关系以及组合关系。比如，哪些输出结果可以同时输出，哪些输出结果不能同时输出。&lt;/li&gt;
+&lt;li&gt;找出什么样的输入条件组合会产生哪种输出结果。&lt;/li&gt;
+&lt;li&gt;把因果图转换成判定表/决策表。&lt;/li&gt;
+&lt;li&gt;为判定表/决策表中的每一列表示的情况设计测试用例。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;判定表法&#34;&gt;判定表法&lt;/h2&gt;
+&lt;p&gt;因果图只是一种辅助工具，我们通过因果图分析出一个表，这个表就是判定表，然后通过判定表编写测试用例。但是有的时候，画因果图非常麻烦，影响测试效率，所以，我们很多时候都是直接写判定表，进而编写测试用例。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;判定表的组成&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;条件桩：问题的所有条件，即所有的条件组合。&lt;/li&gt;
+&lt;li&gt;动作桩：问题的所有输出，即所有的输出组合。&lt;/li&gt;
+&lt;li&gt;条件项：针对条件桩的取值。&lt;/li&gt;
+&lt;li&gt;动作项：条件项的各种取值情况下的输出结果。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;判定表制作步骤&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;列出所有的条件桩和动作桩。&lt;/li&gt;
+&lt;li&gt;填入条件项与动作项，得到初始判定表。&lt;/li&gt;
+&lt;li&gt;简化判定表（合并相似规则（相同动作））。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;正交排列法&#34;&gt;正交（排列）法&lt;/h2&gt;
+&lt;p&gt;在测试时，由于组合量太大，不可能为每一种组合都创建测试用例。如何采用最少的测试用例集合获得最大的测试覆盖率——采用&lt;strong&gt;正交排列法。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;正交测试法中比较重要的两个概念：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;因素（Factor）：在一项实验中，凡欲考察的变量称为因素（变量）。&lt;/li&gt;
+&lt;li&gt;水平（位级，Level）：在实验范围内，因素被考察的值称为水平（变量的取值）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;正交表&#34;&gt;&lt;strong&gt;正交表&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;正交表是一个二维表格，它的构成如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;行数（Runs）：正交表中行的个数，即实验的次数（用例）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;因素数（Factors）：正交表中列的个数。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;水平数（Levels）：任何单个因素能够取得的值的最大个数。正交表中包含的值为从0到&lt;strong&gt;水平数减一&lt;/strong&gt;或&lt;strong&gt;从1到水平数&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;正交表的的表示形式：
+$$
+𝐿_n(m^k)
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;n是表的行数，也就是需要测试组合的次数&lt;/li&gt;
+&lt;li&gt;k是表的列数，表示控件的个数（因素数或因子数）&lt;/li&gt;
+&lt;li&gt;m是每个控件包含的取值个数（各因素的水平数，即各因素的状态数）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>测试基础方法</title>
         <link>https://kingsqiu.github.io/p/test-ways/</link>
         <pubDate>Wed, 04 Mar 2020 00:00:00 +0000</pubDate>
