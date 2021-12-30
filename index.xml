@@ -6,7 +6,26 @@
         <description>Recent content on 盒木</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Tue, 10 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://kingsqiu.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 11 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kingsqiu.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>B站直播教程</title>
+        <link>https://kingsqiu.github.io/p/coffee-machine/</link>
+        <pubDate>Tue, 11 May 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://kingsqiu.github.io/p/coffee-machine/</guid>
+        <description>&lt;p&gt;直播软件：&lt;/p&gt;
+&lt;p&gt;直播间美化平台：&lt;/p&gt;
+&lt;p&gt;虚拟偶像动捕设备和软件：&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>咖啡机的原理</title>
+        <link>https://kingsqiu.github.io/p/coffee-machine/</link>
+        <pubDate>Tue, 11 May 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://kingsqiu.github.io/p/coffee-machine/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>常见的黑盒测试方法</title>
         <link>https://kingsqiu.github.io/p/black_box/</link>
         <pubDate>Tue, 10 Mar 2020 00:00:00 +0000</pubDate>
@@ -585,7 +604,7 @@ Successfully tagged goweb_app:latest
         <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
         
         <guid>https://kingsqiu.github.io/p/hugo-blog-use/</guid>
-        <description>&lt;p&gt;关于是怎么了解到hugo的已经被忘记了，就记得hugo比hexo好用，然后就开始用了。&lt;/p&gt;
+        <description>&lt;h1 id=&#34;日常使用&#34;&gt;日常使用&lt;/h1&gt;
 </description>
         </item>
         <item>
@@ -594,10 +613,10 @@ Successfully tagged goweb_app:latest
         <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
         
         <guid>https://kingsqiu.github.io/p/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/</guid>
-        <description>&lt;img src="https://kingsqiu.github.io/p/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/screenshot.png" alt="Featured image of post 文章配置" /&gt;&lt;h3 id=&#34;配置变量说明官网链接&#34;&gt;配置变量说明官网链接：&lt;/h3&gt;
+        <description>&lt;img src="https://kingsqiu.github.io/p/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/screenshot.png" alt="Featured image of post 文章配置" /&gt;&lt;h2 id=&#34;配置变量说明官网链接&#34;&gt;配置变量说明官网链接：&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/content-management/front-matter/#front-matter-variables&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Front Matter Variables&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;模板&#34;&gt;模板&lt;/h3&gt;
+&lt;h2 id=&#34;模板&#34;&gt;模板&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;YAML&lt;/strong&gt;, identified by ‘&lt;code&gt;---&lt;/code&gt;’.&lt;/li&gt;
 &lt;/ul&gt;
@@ -647,7 +666,8 @@ tags = [
         &amp;quot;&amp;quot;
     ]    
 }
-&lt;/code&gt;&lt;/pre&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;分类模板与图片示例&#34;&gt;分类模板与图片示例&lt;/h2&gt;
+</description>
         </item>
         
     </channel>

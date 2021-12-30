@@ -6,7 +6,27 @@
     <description>Recent content in Posts on 盒木</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 10 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://kingsqiu.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 11 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kingsqiu.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>B站直播教程</title>
+      <link>https://kingsqiu.github.io/p/coffee-machine/</link>
+      <pubDate>Tue, 11 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kingsqiu.github.io/p/coffee-machine/</guid>
+      <description>直播软件：
+直播间美化平台：
+虚拟偶像动捕设备和软件：</description>
+    </item>
+    
+    <item>
+      <title>咖啡机的原理</title>
+      <link>https://kingsqiu.github.io/p/coffee-machine/</link>
+      <pubDate>Tue, 11 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kingsqiu.github.io/p/coffee-machine/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>常见的黑盒测试方法</title>
       <link>https://kingsqiu.github.io/p/black_box/</link>
@@ -81,7 +101,7 @@ package main import ( &amp;#34;fmt&amp;#34; &amp;#34;net/http&amp;#34; ) func ma
       <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kingsqiu.github.io/p/hugo-blog-use/</guid>
-      <description>关于是怎么了解到hugo的已经被忘记了，就记得hugo比hexo好用，然后就开始用了。</description>
+      <description>日常使用 </description>
     </item>
     
     <item>
